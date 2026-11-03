@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+
+# Virtual Environment
+.venv/
+venv/
+env/
+ENV/
+
+# Large dataset files (auto-downloaded at runtime)
+data/SMSSpamCollection
+data/sms-spam-collection.zip
+
+# Generated model artifacts (produced by train_model.py)
+models/classifier.joblib
+
+# Generated output artifacts
+outputs/test_predictions.csv
+outputs/test_metrics.json
+outputs/chatbot_benchmark.csv
+outputs/template_chatbot_comparison.csv
+
+# Cleaned dataset CSV (generated from raw data)
+data/cleaned_sms_dataset.csv
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Distribution
+dist/
+build/
+*.egg-info/
+

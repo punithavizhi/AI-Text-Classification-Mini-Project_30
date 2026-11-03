@@ -1,0 +1,3 @@
+# This file keeps the models/ directory tracked by Git.
+# The trained classifier.joblib will be generated here after running train_model.py
+

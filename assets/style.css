@@ -1,0 +1,306 @@
+/* ==========================================================================
+   AI Text Classification Dashboard - Premium Dark Navy & Purple Theme
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+    --bg-main: #0a0e1a;
+    --bg-card: rgba(18, 24, 43, 0.75);
+    --bg-card-hover: rgba(28, 36, 62, 0.85);
+    --border-color: rgba(139, 92, 246, 0.22);
+    --border-glow: rgba(168, 85, 247, 0.45);
+    
+    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+    --card-gradient: linear-gradient(135deg, rgba(30, 27, 75, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+    --accent-glow: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    
+    --spam-color: #ef4444;
+    --spam-bg: rgba(239, 68, 68, 0.15);
+    --spam-border: rgba(239, 68, 68, 0.35);
+    
+    --ham-color: #10b981;
+    --ham-bg: rgba(16, 185, 129, 0.15);
+    --ham-border: rgba(16, 185, 129, 0.35);
+    
+    --chatbot-color: #38bdf8;
+    --classifier-color: #a855f7;
+    
+    --radius-lg: 18px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --transition-fast: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* App Background & Typography */
+.stApp {
+    background-color: var(--bg-main) !important;
+    background-image: 
+        radial-gradient(circle at top left, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at top right, rgba(217, 70, 239, 0.10) 0%, transparent 40%),
+        radial-gradient(circle at bottom center, rgba(30, 27, 75, 0.3) 0%, transparent 60%) !important;
+    background-attachment: fixed !important;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    color: var(--text-primary) !important;
+}
+
+/* Sidebar styling */
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #0b0f19 0%, #111827 100%) !important;
+    border-right: 1px solid rgba(139, 92, 246, 0.2) !important;
+}
+
+[data-testid="stSidebarNav"] {
+    padding-top: 1rem;
+}
+
+[data-testid="stSidebarNav"] span {
+    font-weight: 500 !important;
+    font-size: 0.95rem !important;
+    color: var(--text-secondary) !important;
+}
+
+[data-testid="stSidebarNav"] [aria-selected="true"] span {
+    color: #c084fc !important;
+    font-weight: 700 !important;
+}
+
+/* Hero Banner */
+.hero-card {
+    background: var(--card-gradient);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem 2rem;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px 0 rgba(124, 58, 237, 0.12);
+    backdrop-filter: blur(12px);
+    transition: var(--transition-fast);
+}
+
+.hero-card:hover {
+    border-color: var(--border-glow);
+    box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6), 0 0 25px 0 rgba(168, 85, 247, 0.22);
+}
+
+.hero-title {
+    font-size: 2.35rem;
+    font-weight: 800;
+    line-height: 1.2;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 760px;
+}
+
+/* Metric Cards */
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.5rem 1.25rem;
+    text-align: left;
+    transition: var(--transition-fast);
+    position: relative;
+    backdrop-filter: blur(8px);
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-glow);
+    background: var(--bg-card-hover);
+    box-shadow: 0 12px 24px -8px rgba(124, 58, 237, 0.25);
+}
+
+.stat-card .label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+
+.stat-card .value {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #ffffff;
+    font-feature-settings: "tnum";
+}
+
+.stat-card .detail {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    margin-top: 0.4rem;
+}
+
+/* Status Badges */
+.badge-spam {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--spam-bg);
+    color: #fca5a5;
+    border: 1px solid var(--spam-border);
+    padding: 0.6rem 1.25rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.25);
+}
+
+.badge-ham {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--ham-bg);
+    color: #6ee7b7;
+    border: 1px solid var(--ham-border);
+    padding: 0.6rem 1.25rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
+}
+
+/* Feature Cards */
+.feature-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    height: 100%;
+    transition: var(--transition-fast);
+}
+
+.feature-card:hover {
+    border-color: rgba(168, 85, 247, 0.4);
+    transform: translateY(-2px);
+}
+
+.feature-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+    display: inline-block;
+}
+
+.feature-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin-bottom: 0.5rem;
+}
+
+.feature-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+
+/* Streamlit form elements enhancements */
+div[data-baseweb="textarea"] {
+    background-color: rgba(15, 23, 42, 0.85) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-md) !important;
+    transition: var(--transition-fast) !important;
+}
+
+div[data-baseweb="textarea"]:focus-within {
+    border-color: #8b5cf6 !important;
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3) !important;
+}
+
+textarea {
+    color: #f8fafc !important;
+    font-family: inherit !important;
+    font-size: 1rem !important;
+}
+
+/* Buttons */
+.stButton>button {
+    border-radius: var(--radius-md) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.02em !important;
+    transition: var(--transition-fast) !important;
+    border: 1px solid rgba(139, 92, 246, 0.3) !important;
+}
+
+.stButton>button[kind="primary"] {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35) !important;
+}
+
+.stButton>button[kind="primary"]:hover {
+    box-shadow: 0 6px 22px rgba(139, 92, 246, 0.55) !important;
+    transform: translateY(-1px) !important;
+}
+
+.stButton>button[kind="secondary"]:hover {
+    border-color: #a855f7 !important;
+    color: #c084fc !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Custom Table / Dataframe styling */
+[data-testid="stDataFrame"] {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+/* Code and explanations */
+.code-box {
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: var(--radius-sm);
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
+    color: #e2e8f0;
+}
+
+/* Pill badge */
+.pill {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.pill-purple {
+    background: rgba(139, 92, 246, 0.2);
+    color: #c084fc;
+    border: 1px solid rgba(139, 92, 246, 0.4);
+}
+
+.pill-cyan {
+    background: rgba(56, 189, 248, 0.2);
+    color: #7dd3fc;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+}
